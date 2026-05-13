@@ -1,0 +1,29 @@
+{%- if section.settings.show and section.settings.text != blank -%}
+<div class="announcement-bar" style="background:{{ section.settings.bg_color }};color:{{ section.settings.text_color }};">
+  <p class="announcement-bar__text">
+    {%- if section.settings.link != blank -%}
+      <a href="{{ section.settings.link }}">{{ section.settings.text }}</a>
+    {%- else -%}
+      {{ section.settings.text }}
+    {%- endif -%}
+  </p>
+</div>
+<style>
+  .announcement-bar { text-align:center; padding:.5rem 1rem; font-size:.8125rem; font-weight:500; }
+  .announcement-bar a { text-decoration:underline; }
+</style>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Announcement bar",
+  "settings": [
+    { "type": "checkbox", "id": "show", "label": "Show announcement bar", "default": true },
+    { "type": "text", "id": "text", "label": "Announcement text", "default": "Trusted phone dealer since 2007 — Free same-day collection islandwide 🇸🇬" },
+    { "type": "url",  "id": "link", "label": "Link (optional)" },
+    { "type": "color", "id": "bg_color",   "label": "Background colour", "default": "#1A1A1A" },
+    { "type": "color", "id": "text_color", "label": "Text colour",       "default": "#FFFFFF" }
+  ],
+  "presets": [{ "name": "Announcement bar" }]
+}
+{% endschema %}

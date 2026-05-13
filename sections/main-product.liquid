@@ -1,0 +1,95 @@
+<div class="product-page">
+  <div class="mcx-container">
+    <div class="product-layout">
+
+      {%- comment -%} Media {%- endcomment -%}
+      <div class="product-media">
+        {%- if product.featured_image -%}
+          {{ product.featured_image | image_url: width: 800 | image_tag:
+              alt: product.featured_image.alt | escape,
+              loading: 'eager' }}
+        {%- else -%}
+          <span style="font-size:5rem;color:var(--mcx-border)">📱</span>
+        {%- endif -%}
+      </div>
+
+      {%- comment -%} Info {%- endcomment -%}
+      <div class="product-info">
+        {%- assign brand = '' -%}
+        {%- for tag in product.tags -%}
+          {%- if tag == 'Apple' or tag == 'Samsung' or tag == 'OPPO' or tag == 'Xiaomi' or tag == 'Google' -%}
+            {%- assign brand = tag -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if brand != '' -%}
+          <p class="product-brand">{{ brand }}</p>
+        {%- endif -%}
+
+        <h1 class="product-title">{{ product.title }}</h1>
+
+        <div>
+          <span class="product-price">
+            {{ product.selected_or_first_available_variant.price | money }}
+          </span>
+          {%- if product.compare_at_price > product.price -%}
+            <span class="product-price--compare">
+              {{ product.compare_at_price | money }}
+            </span>
+          {%- endif -%}
+        </div>
+
+        {%- comment -%} Variants {%- endcomment -%}
+        {%- unless product.has_only_default_variant -%}
+          {%- for option in product.options_with_values -%}
+            <div class="product-variants">
+              <p class="variant-label">{{ option.name }}</p>
+              <div class="variant-options">
+                {%- for value in option.values -%}
+                  {%- assign variant_available = false -%}
+                  {%- for variant in product.variants -%}
+                    {%- if variant.title contains value and variant.available -%}
+                      {%- assign variant_available = true -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                  <button type="button"
+                    class="variant-btn{% unless variant_available %} unavailable{% endunless %}"
+                    {% if option.selected_value == value %}data-selected{% endif %}>
+                    {{ value }}
+                  </button>
+                {%- endfor -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- endunless -%}
+
+        {%- comment -%} Add to cart {%- endcomment -%}
+        {%- form 'product', product, class: 'add-to-cart-form' -%}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <button type="submit"
+                  class="btn btn-primary btn-lg add-to-cart"
+                  {% unless product.available %}disabled{% endunless %}>
+            {%- if product.available -%}
+              Add to Cart
+            {%- else -%}
+              Sold Out
+            {%- endif -%}
+          </button>
+        {%- endform -%}
+
+        {%- comment -%} Description {%- endcomment -%}
+        {%- if product.description != blank -%}
+          <div class="product-description">
+            {{ product.description }}
+          </div>
+        {%- endif -%}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Product page",
+  "settings": []
+}
+{% endschema %}

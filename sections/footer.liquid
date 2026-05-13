@@ -1,0 +1,122 @@
+<footer class="site-footer" role="contentinfo">
+
+  {%- comment -%} Trade-in top band {%- endcomment -%}
+  <div class="trade-cta">
+    <div class="mcx-container trade-cta-inner">
+      <p><strong>Know what your device is worth?</strong> Get an instant trade-in valuation.</p>
+      <a href="/pages/trade-in" class="btn btn-white">Start Trade-In</a>
+    </div>
+  </div>
+
+  <div class="mcx-container footer-inner">
+
+    {%- comment -%} Brand column {%- endcomment -%}
+    <div class="footer-brand">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 200 | image_tag:
+            alt: shop.name,
+            class: 'footer-brand__logo',
+            style: 'filter:brightness(0) invert(1);height:2.5rem;width:auto;margin-bottom:1rem;' }}
+      {%- else -%}
+        <img src="{{ 'mcx-logo.png' | asset_url }}" alt="{{ shop.name }}"
+             style="height:2.5rem;width:auto;filter:brightness(0) invert(1);margin-bottom:1rem;">
+      {%- endif -%}
+      <p class="footer-tagline">
+        {{ section.settings.tagline | default: 'Trusted since 2007. We buy, sell, and trade quality devices with complete transparency.' }}
+      </p>
+      <div class="footer-social">
+        {%- if section.settings.facebook != blank -%}
+          <a href="{{ section.settings.facebook }}" class="social-link" aria-label="Facebook" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.instagram != blank -%}
+          <a href="{{ section.settings.instagram }}" class="social-link" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg>
+          </a>
+        {%- endif -%}
+        {%- if section.settings.tiktok != blank -%}
+          <a href="{{ section.settings.tiktok }}" class="social-link" aria-label="TikTok" target="_blank" rel="noopener">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.73a4.85 4.85 0 0 1-1.01-.04z"/></svg>
+          </a>
+        {%- endif -%}
+      </div>
+    </div>
+
+    {%- comment -%} Shop links {%- endcomment -%}
+    <div>
+      <h3 class="footer-heading">Shop</h3>
+      <ul class="footer-links" role="list">
+        {%- for link in linklists[section.settings.footer_menu_1].links -%}
+          <li><a href="{{ link.url }}" class="footer-link">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    {%- comment -%} Support links {%- endcomment -%}
+    <div>
+      <h3 class="footer-heading">Support</h3>
+      <ul class="footer-links" role="list">
+        {%- for link in linklists[section.settings.footer_menu_2].links -%}
+          <li><a href="{{ link.url }}" class="footer-link">{{ link.title }}</a></li>
+        {%- endfor -%}
+      </ul>
+    </div>
+
+    {%- comment -%} Contact {%- endcomment -%}
+    <div>
+      <h3 class="footer-heading">Contact</h3>
+      {%- if section.settings.phone != blank -%}
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.6 1.25h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.85a16 16 0 0 0 6.07 6.07l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16.92z"/></svg>
+          <a href="tel:{{ section.settings.phone | remove: ' ' }}">{{ section.settings.phone }}</a>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.email != blank -%}
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          <a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>
+        </div>
+      {%- endif -%}
+      {%- if section.settings.address != blank -%}
+        <div class="footer-contact-item">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>{{ section.settings.address }}</span>
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    <div class="mcx-container" style="width:100%;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.75rem;">
+      <p>&copy; {{ 'now' | date: '%Y' }} {{ shop.name }}. All rights reserved.</p>
+      <div class="footer-bottom-links">
+        <a href="{{ routes.root_url }}policies/privacy-policy">Privacy</a>
+        <a href="{{ routes.root_url }}policies/terms-of-service">Terms</a>
+        <a href="{{ routes.root_url }}policies/refund-policy">Returns</a>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+{% schema %}
+{
+  "name": "Footer",
+  "settings": [
+    { "type": "image_picker", "id": "logo",       "label": "Logo image" },
+    { "type": "text",         "id": "tagline",    "label": "Tagline",    "default": "Trusted since 2007. We buy, sell, and trade quality devices with complete transparency." },
+    { "type": "link_list",    "id": "footer_menu_1", "label": "Shop menu",    "default": "main-menu" },
+    { "type": "link_list",    "id": "footer_menu_2", "label": "Support menu", "default": "footer" },
+    { "type": "header",       "label": "Contact details" },
+    { "type": "text",         "id": "phone",   "label": "Phone",   "placeholder": "+65 9123 4567" },
+    { "type": "text",         "id": "email",   "label": "Email",   "placeholder": "hello@mobileconnex.com" },
+    { "type": "text",         "id": "address", "label": "Address" },
+    { "type": "header",       "label": "Social media" },
+    { "type": "url",          "id": "facebook",  "label": "Facebook URL" },
+    { "type": "url",          "id": "instagram", "label": "Instagram URL" },
+    { "type": "url",          "id": "tiktok",    "label": "TikTok URL" }
+  ]
+}
+{% endschema %}

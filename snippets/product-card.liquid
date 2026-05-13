@@ -1,0 +1,51 @@
+{%- comment -%}
+  Renders a product card.
+  Usage: render 'product-card', product: product, badge: 'New'
+{%- endcomment -%}
+
+{%- liquid
+  assign brand = ''
+  for tag in product.tags
+    if tag == 'Apple' or tag == 'Samsung' or tag == 'OPPO' or tag == 'Xiaomi' or tag == 'Google' or tag == 'OnePlus' or tag == 'Sony'
+      assign brand = tag
+    endif
+  endfor
+-%}
+
+<a href="{{ product.url }}" class="product-card">
+  {%- if badge != blank -%}
+    <span class="product-card__badge">{{ badge }}</span>
+  {%- endif -%}
+  {%- unless product.available -%}
+    <span class="product-card__sold-out">Sold Out</span>
+  {%- endunless -%}
+
+  <div class="product-card__image">
+    {%- if product.featured_image -%}
+      {{ product.featured_image | image_url: width: 400 | image_tag:
+          alt: product.featured_image.alt | escape,
+          loading: 'lazy',
+          width: 400,
+          height: 400 }}
+    {%- else -%}
+      <span class="no-image" aria-hidden="true">📱</span>
+    {%- endif -%}
+  </div>
+
+  <div class="product-card__body">
+    {%- if brand != blank -%}
+      <p class="product-card__brand">{{ brand }}</p>
+    {%- endif -%}
+    <h3 class="product-card__title">{{ product.title }}</h3>
+
+    <div class="product-card__footer">
+      <div>
+        <p class="product-card__price-label">From</p>
+        <p class="product-card__price">{{ product.price_min | money }}</p>
+      </div>
+      <span class="product-card__cta" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
+      </span>
+    </div>
+  </div>
+</a>

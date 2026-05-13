@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#F06B6B">
+
+  <title>
+    {{ page_title }}
+    {%- if current_tags %} &ndash; {{ current_tags | join: ', ' }}{%- endif %}
+    {%- if current_page != 1 %} &ndash; Page {{ current_page }}{%- endif %}
+    {%- unless page_title contains shop.name %} &ndash; {{ shop.name }}{%- endunless %}
+  </title>
+
+  {%- if page_description %}
+    <meta name="description" content="{{ page_description | escape }}">
+  {%- endif %}
+
+  <link rel="canonical" href="{{ canonical_url }}">
+
+  {{ content_for_header }}
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  {{ 'base.css' | asset_url | stylesheet_tag }}
+</head>
+
+<body class="template-{{ template.name }}">
+  <a class="visually-hidden" href="#MainContent">Skip to content</a>
+
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+
+  <main id="MainContent" role="main" tabindex="-1">
+    {{ content_for_layout }}
+  </main>
+
+  {% section 'footer' %}
+
+  <script>
+    // Scroll shadow on header
+    (function () {
+      var header = document.querySelector('.site-header');
+      if (!header) return;
+      window.addEventListener('scroll', function () {
+        header.classList.toggle('scrolled', window.scrollY > 8);
+      }, { passive: true });
+    })();
+
+    // Mobile menu
+    (function () {
+      var toggle = document.getElementById('mobile-menu-toggle');
+      var menu   = document.getElementById('mobile-menu');
+      if (!toggle || !menu) return;
+      toggle.addEventListener('click', function () {
+        var open = menu.classList.toggle('is-open');
+        toggle.setAttribute('aria-expanded', open);
+      });
+    })();
+
+    // Variant picker
+    document.addEventListener('click', function (e) {
+      var btn = e.target.closest('.variant-btn');
+      if (!btn || btn.classList.contains('unavailable')) return;
+      var form = btn.closest('form');
+      if (!form) return;
+      var group = btn.closest('.variant-options');
+      group.querySelectorAll('.variant-btn').forEach(function (b) { b.classList.remove('selected'); });
+      btn.classList.add('selected');
+      // update hidden input
+      var input = form.querySelector('input[name="id"]');
+      if (input && btn.dataset.variantId) input.value = btn.dataset.variantId;
+    });
+  </script>
+</body>
+</html>

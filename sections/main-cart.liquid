@@ -1,0 +1,54 @@
+{%- form 'cart', cart -%}
+<div class="mcx-container" style="padding:2.5rem 0 5rem;">
+  <h1 style="font-size:2rem;font-weight:700;color:var(--mcx-dark);margin-bottom:2rem;">Your Cart</h1>
+
+  {%- if cart.item_count > 0 -%}
+    <div style="display:grid;grid-template-columns:1fr;gap:2rem;">
+      <div>
+        {%- for item in cart.items -%}
+          <div style="display:flex;gap:1rem;padding:1.25rem 0;border-bottom:1px solid var(--mcx-border);align-items:center;">
+            {%- if item.image -%}
+              {{ item.image | image_url: width: 100 | image_tag:
+                  alt: item.title,
+                  style: 'width:80px;height:80px;object-fit:contain;background:var(--mcx-bg);border-radius:8px;flex-shrink:0;' }}
+            {%- endif -%}
+            <div style="flex:1;min-width:0;">
+              <p style="font-weight:600;color:var(--mcx-dark);margin-bottom:.25rem;">{{ item.product.title }}</p>
+              {%- unless item.variant.title == 'Default Title' -%}
+                <p style="font-size:.8125rem;color:var(--mcx-gray);">{{ item.variant.title }}</p>
+              {%- endunless -%}
+              <p style="font-size:.9375rem;font-weight:700;color:var(--mcx-dark);margin-top:.5rem;">{{ item.final_line_price | money }}</p>
+            </div>
+            <a href="{{ routes.cart_change_url }}?line={{ forloop.index }}&quantity=0"
+               style="color:var(--mcx-gray);font-size:.8125rem;white-space:nowrap;">Remove</a>
+          </div>
+        {%- endfor -%}
+      </div>
+
+      <div style="background:var(--mcx-bg);border-radius:var(--radius);padding:1.5rem;align-self:start;">
+        <div style="display:flex;justify-content:space-between;margin-bottom:1.25rem;">
+          <span style="font-weight:600;color:var(--mcx-dark);">Subtotal</span>
+          <span style="font-size:1.125rem;font-weight:700;color:var(--mcx-dark);">{{ cart.total_price | money }}</span>
+        </div>
+        <button type="submit" name="checkout" class="btn btn-primary" style="width:100%;justify-content:center;padding:1rem;">
+          Checkout
+        </button>
+      </div>
+    </div>
+  {%- else -%}
+    <div class="empty-state">
+      <p style="font-size:3rem;margin-bottom:1rem;">🛒</p>
+      <h3>Your cart is empty</h3>
+      <p>Browse our phones and add something you love.</p>
+      <a href="{{ routes.root_url }}" class="btn btn-primary">Continue Shopping</a>
+    </div>
+  {%- endif -%}
+</div>
+{%- endform -%}
+
+{% schema %}
+{
+  "name": "Cart page",
+  "settings": []
+}
+{% endschema %}

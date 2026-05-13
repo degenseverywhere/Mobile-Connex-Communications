@@ -1,0 +1,48 @@
+<section class="hero">
+  <div class="mcx-container hero-inner">
+    {%- if section.settings.badge != blank -%}
+      <span class="hero-badge">⭐ {{ section.settings.badge }}</span>
+    {%- endif -%}
+
+    <h1>
+      {{ section.settings.heading | replace: '[red]', '<span>' | replace: '[/red]', '</span>' }}
+    </h1>
+
+    {%- if section.settings.subheading != blank -%}
+      <p>{{ section.settings.subheading }}</p>
+    {%- endif -%}
+
+    <div class="hero-actions">
+      {%- if section.settings.cta1_label != blank -%}
+        <a href="{{ section.settings.cta1_url }}" class="btn btn-primary btn-lg">
+          {{ section.settings.cta1_label }}
+        </a>
+      {%- endif -%}
+      {%- if section.settings.cta2_label != blank -%}
+        <a href="{{ section.settings.cta2_url }}" class="btn btn-outline btn-lg">
+          {{ section.settings.cta2_label }}
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Hero banner",
+  "settings": [
+    { "type": "text",    "id": "badge",      "label": "Badge text",  "default": "Trusted Since 2007 · Singapore" },
+    { "type": "text",    "id": "heading",    "label": "Heading (wrap red text with [red]...[/red])",
+      "default": "New & Refurbished Phones [red]You Can Trust[/red]" },
+    { "type": "textarea","id": "subheading", "label": "Subheading",
+      "default": "Singapore's go-to phone dealer for new flagship and quality refurbished devices — fully tested, honestly priced." },
+    { "type": "header",  "label": "Primary CTA" },
+    { "type": "text",    "id": "cta1_label", "label": "Button label", "default": "Shop New Phones" },
+    { "type": "url",     "id": "cta1_url",   "label": "Button link",  "default": "/collections/new-phones" },
+    { "type": "header",  "label": "Secondary CTA" },
+    { "type": "text",    "id": "cta2_label", "label": "Button label", "default": "Shop Refurbished" },
+    { "type": "url",     "id": "cta2_url",   "label": "Button link",  "default": "/collections/refurbished" }
+  ],
+  "presets": [{ "name": "Hero banner" }]
+}
+{% endschema %}

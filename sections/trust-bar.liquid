@@ -1,0 +1,38 @@
+<div class="trust-bar">
+  <div class="mcx-container trust-bar-inner">
+    {%- for block in section.blocks -%}
+      <div class="trust-item" {{ block.shopify_attributes }}>
+        <div class="trust-icon" aria-hidden="true">{{ block.settings.icon }}</div>
+        <div>
+          <h3>{{ block.settings.title }}</h3>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      </div>
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trust bar",
+  "blocks": [
+    {
+      "type": "item",
+      "name": "Trust item",
+      "settings": [
+        { "type": "text", "id": "icon",  "label": "Icon (emoji)", "default": "✅" },
+        { "type": "text", "id": "title", "label": "Title",        "default": "Trusted Since 2007" },
+        { "type": "text", "id": "text",  "label": "Description",  "default": "18+ years serving Singapore customers" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Trust bar",
+    "blocks": [
+      { "type": "item", "settings": { "icon": "🛡️", "title": "Trusted Since 2007", "text": "18+ years serving Singapore customers" } },
+      { "type": "item", "settings": { "icon": "🔍", "title": "Quality Guaranteed",  "text": "Every device tested before sale" } },
+      { "type": "item", "settings": { "icon": "⚡", "title": "Instant Trade-In",    "text": "Get a quote for your device in seconds" } }
+    ]
+  }]
+}
+{% endschema %}

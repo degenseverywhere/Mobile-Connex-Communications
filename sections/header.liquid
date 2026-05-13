@@ -1,0 +1,119 @@
+<header class="site-header" role="banner">
+  <div class="mcx-container header-inner">
+
+    {%- comment -%} Logo {%- endcomment -%}
+    <a href="{{ routes.root_url }}" class="header-logo" aria-label="{{ shop.name }}">
+      {%- if section.settings.logo != blank -%}
+        {{ section.settings.logo | image_url: width: 300 | image_tag:
+            loading: 'eager',
+            alt: shop.name,
+            style: "width:" | append: section.settings.logo_width | append: "px" }}
+      {%- else -%}
+        <img src="{{ 'mcx-logo.png' | asset_url }}" alt="{{ shop.name }}"
+             style="width:{{ section.settings.logo_width }}px" loading="eager">
+      {%- endif -%}
+    </a>
+
+    {%- comment -%} Desktop nav {%- endcomment -%}
+    <nav class="header-nav" aria-label="Main navigation">
+      <ul class="nav-list" role="list">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <li class="nav-item">
+            <a href="{{ link.url }}"
+               class="nav-link{% if link.active %} nav-link--active{% endif %}">
+              {{ link.title }}
+            </a>
+          </li>
+        {%- endfor -%}
+      </ul>
+    </nav>
+
+    {%- comment -%} Right side {%- endcomment -%}
+    <div class="header-right">
+      {%- if section.settings.phone != blank -%}
+        <a href="tel:{{ section.settings.phone | remove: ' ' }}" class="header-phone">
+          {{ section.settings.phone }}
+        </a>
+      {%- endif -%}
+
+      <a href="/pages/trade-in" class="btn btn-primary header-cta">Get Trade-In Value</a>
+
+      <a href="{{ routes.cart_url }}" class="header-cart" aria-label="Cart ({{ cart.item_count }} items)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+             aria-hidden="true">
+          <circle cx="8"  cy="21" r="1"/><circle cx="19" cy="21" r="1"/>
+          <path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/>
+        </svg>
+        {%- if cart.item_count > 0 -%}
+          <span class="cart-count" aria-hidden="true">{{ cart.item_count }}</span>
+        {%- endif -%}
+      </a>
+
+      <button class="hamburger" id="mobile-menu-toggle"
+              aria-expanded="false" aria-controls="mobile-menu"
+              aria-label="Toggle navigation">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+
+  {%- comment -%} Mobile drawer {%- endcomment -%}
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <nav aria-label="Mobile navigation">
+      <ul class="mobile-nav-list" role="list">
+        {%- for link in linklists[section.settings.menu].links -%}
+          <li>
+            <a href="{{ link.url }}" class="mobile-nav-link">{{ link.title }}</a>
+          </li>
+        {%- endfor -%}
+      </ul>
+      <div class="mobile-menu-footer">
+        {%- if section.settings.phone != blank -%}
+          <a href="tel:{{ section.settings.phone | remove: ' ' }}" class="footer-link">
+            📞 {{ section.settings.phone }}
+          </a>
+        {%- endif -%}
+        <a href="/pages/trade-in" class="btn btn-primary">Get Trade-In Value</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+{% schema %}
+{
+  "name": "Header",
+  "class": "section-header",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Logo image"
+    },
+    {
+      "type": "range",
+      "id": "logo_width",
+      "min": 60,
+      "max": 250,
+      "step": 10,
+      "default": 140,
+      "unit": "px",
+      "label": "Logo width"
+    },
+    {
+      "type": "link_list",
+      "id": "menu",
+      "default": "main-menu",
+      "label": "Navigation menu"
+    },
+    {
+      "type": "text",
+      "id": "phone",
+      "label": "Phone number",
+      "placeholder": "+65 9123 4567"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,38 @@
+{%- assign col = collections[section.settings.collection] -%}
+
+<section class="section">
+  <div class="mcx-container">
+    <div class="section-header">
+      <h2 class="section-title">{{ section.settings.title }}</h2>
+      {%- if col != blank -%}
+        <a href="{{ col.url }}" class="section-link">
+          View all &rarr;
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if col != blank and col.products_count > 0 -%}
+      <div class="product-grid">
+        {%- for product in col.products limit: section.settings.products_to_show -%}
+          {%- render 'product-card', product: product, badge: section.settings.badge -%}
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <p style="color:var(--mcx-gray);padding:2rem 0;">No products found in this collection.</p>
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Featured collection",
+  "settings": [
+    { "type": "text",       "id": "title",            "label": "Section title",        "default": "Latest Arrivals" },
+    { "type": "collection", "id": "collection",       "label": "Collection" },
+    { "type": "range",      "id": "products_to_show", "label": "Products to show",
+      "min": 2, "max": 12, "step": 2, "default": 4 },
+    { "type": "text",       "id": "badge",            "label": "Badge text (optional)", "info": "e.g. New or Refurbished" }
+  ],
+  "presets": [{ "name": "Featured collection" }]
+}
+{% endschema %}

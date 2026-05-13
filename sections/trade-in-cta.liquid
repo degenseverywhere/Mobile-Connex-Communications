@@ -1,0 +1,22 @@
+<div class="mcx-container" style="padding-bottom:3.5rem;">
+  <div class="cta-dark">
+    <h2>{{ section.settings.heading }}</h2>
+    <p>{{ section.settings.subheading }}</p>
+    <a href="{{ section.settings.button_url }}" class="btn btn-primary btn-lg">
+      {{ section.settings.button_label }}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Trade-in CTA",
+  "settings": [
+    { "type": "text",     "id": "heading",      "label": "Heading",      "default": "What's your old phone worth?" },
+    { "type": "textarea", "id": "subheading",   "label": "Subheading",   "default": "Get an instant trade-in valuation and put it toward your next device." },
+    { "type": "text",     "id": "button_label", "label": "Button label", "default": "Get Trade-In Value" },
+    { "type": "url",      "id": "button_url",   "label": "Button link",  "default": "/pages/trade-in" }
+  ],
+  "presets": [{ "name": "Trade-in CTA" }]
+}
+{% endschema %}
