@@ -3,6 +3,7 @@ import ProductCard from "@/components/ProductCard";
 import { RefreshCw } from "lucide-react";
 import Link from "next/link";
 
+export const dynamic = "force-dynamic";
 export const metadata = { title: "Refurbished Phones | Mobile Connex Communications" };
 
 const BRANDS     = ["All", "Apple", "Samsung", "OPPO"];

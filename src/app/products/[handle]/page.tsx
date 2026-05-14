@@ -1,13 +1,10 @@
-import { getProductByHandle, getAllProducts, formatPrice, getBrand, getCondition } from "@/lib/shopify";
+import { getProductByHandle, formatPrice, getBrand, getCondition } from "@/lib/shopify";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 
-export async function generateStaticParams() {
-  const products = await getAllProducts(50);
-  return products.map((p) => ({ handle: p.handle }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
   const { handle } = await params;

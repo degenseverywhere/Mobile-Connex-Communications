@@ -3,6 +3,8 @@ import { ArrowRight, ShieldCheck, RefreshCw, Zap } from "lucide-react";
 import { getAllProducts } from "@/lib/shopify";
 import ProductCard from "@/components/ProductCard";
 
+export const dynamic = "force-dynamic";
+
 export const metadata = {
   title: "Mobile Connex Communications | New & Refurbished Phones Singapore",
   description: "Trusted phone dealer since 2007. Buy new and refurbished phones or trade in your device.",

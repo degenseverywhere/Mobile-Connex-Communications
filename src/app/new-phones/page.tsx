@@ -2,6 +2,7 @@ import { getProductsByTag } from "@/lib/shopify";
 import ProductCard from "@/components/ProductCard";
 import { Smartphone } from "lucide-react";
 
+export const dynamic = "force-dynamic";
 export const metadata = { title: "New Phones | Mobile Connex Communications" };
 
 const BRANDS = ["All", "Apple", "Samsung", "OPPO"];
