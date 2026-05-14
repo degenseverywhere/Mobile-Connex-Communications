@@ -14,15 +14,16 @@ const CONDITION_KEY = [
   { label: "Fair", desc: "Visible wear, 100% working" },
 ];
 
-export default function RefurbishedPage({
+export default async function RefurbishedPage({
   searchParams,
 }: {
-  searchParams: { brand?: string; condition?: string };
+  searchParams: Promise<{ brand?: string; condition?: string }>;
 }) {
-  const activeBrand     = searchParams.brand     ?? "All";
-  const activeCondition = searchParams.condition ?? "All";
+  const { brand, condition } = await searchParams;
+  const activeBrand     = brand     ?? "All";
+  const activeCondition = condition ?? "All";
 
-  const products = getProductsByTag("Refurbished");
+  const products = await getProductsByTag("Refurbished");
   const filtered = products.filter((p) => {
     const brandOk     = activeBrand     === "All" || p.tags.includes(activeBrand);
     const conditionOk = activeCondition === "All" || p.tags.includes(activeCondition);

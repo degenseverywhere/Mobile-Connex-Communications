@@ -1,4 +1,5 @@
-import rawProducts from "@/data/products.json";
+const SHOP  = process.env.SHOPIFY_SHOP!;
+const TOKEN = process.env.SHOPIFY_ACCESS_TOKEN!;
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -25,20 +26,78 @@ export type ShopifyProduct = {
   };
 };
 
-const ALL_PRODUCTS = rawProducts as ShopifyProduct[];
+// ─── GraphQL executor ─────────────────────────────────────────────────────────
+
+async function graphql<T>(
+  query: string,
+  variables: Record<string, unknown> = {}
+): Promise<T> {
+  const res = await fetch(
+    `https://${SHOP}.myshopify.com/api/2025-01/graphql.json`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Shopify-Storefront-Private-Token": TOKEN,
+      },
+      body: JSON.stringify({ query, variables }),
+      next: { revalidate: 300 }, // cache 5 min, re-fetch in background
+    }
+  );
+
+  if (!res.ok) throw new Error(`Shopify API error: ${res.status}`);
+  const { data, errors } = await res.json();
+  if (errors?.length) throw new Error(errors[0].message);
+  return data as T;
+}
+
+// ─── Shared fragment ──────────────────────────────────────────────────────────
+
+const FIELDS = `
+  id title handle tags description
+  priceRange { minVariantPrice { amount currencyCode } }
+  featuredImage { url altText }
+  variants(first: 20) {
+    edges {
+      node { id title price { amount currencyCode } availableForSale }
+    }
+  }
+`;
 
 // ─── Public API ───────────────────────────────────────────────────────────────
 
-export function getAllProducts(limit = 8): ShopifyProduct[] {
-  return ALL_PRODUCTS.slice(0, limit);
+export async function getAllProducts(limit = 8): Promise<ShopifyProduct[]> {
+  const data = await graphql<{ products: { edges: { node: ShopifyProduct }[] } }>(
+    `query($n: Int!) {
+       products(first: $n, sortKey: CREATED_AT, reverse: true) {
+         edges { node { ${FIELDS} } }
+       }
+     }`,
+    { n: limit }
+  );
+  return data.products.edges.map((e) => e.node);
 }
 
-export function getProductsByTag(tag: string, limit = 24): ShopifyProduct[] {
-  return ALL_PRODUCTS.filter((p) => p.tags.includes(tag)).slice(0, limit);
+export async function getProductsByTag(tag: string, limit = 24): Promise<ShopifyProduct[]> {
+  const data = await graphql<{ products: { edges: { node: ShopifyProduct }[] } }>(
+    `query($q: String!, $n: Int!) {
+       products(query: $q, first: $n, sortKey: CREATED_AT, reverse: true) {
+         edges { node { ${FIELDS} } }
+       }
+     }`,
+    { q: `tag:${tag}`, n: limit }
+  );
+  return data.products.edges.map((e) => e.node);
 }
 
-export function getProductByHandle(handle: string): ShopifyProduct | null {
-  return ALL_PRODUCTS.find((p) => p.handle === handle) ?? null;
+export async function getProductByHandle(handle: string): Promise<ShopifyProduct | null> {
+  const data = await graphql<{ product: ShopifyProduct | null }>(
+    `query($handle: String!) {
+       product(handle: $handle) { ${FIELDS} }
+     }`,
+    { handle }
+  );
+  return data.product;
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────

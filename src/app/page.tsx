@@ -14,8 +14,8 @@ const TRUST = [
   { icon: Zap,         title: "Instant Trade-In",   desc: "Get a quote for your device in seconds" },
 ];
 
-export default function Home() {
-  const featured = getAllProducts(4);
+export default async function Home() {
+  const featured = await getAllProducts(4);
 
   return (
     <>

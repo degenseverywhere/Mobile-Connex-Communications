@@ -6,14 +6,15 @@ export const metadata = { title: "New Phones | Mobile Connex Communications" };
 
 const BRANDS = ["All", "Apple", "Samsung", "OPPO"];
 
-export default function NewPhonesPage({
+export default async function NewPhonesPage({
   searchParams,
 }: {
-  searchParams: { brand?: string };
+  searchParams: Promise<{ brand?: string }>;
 }) {
-  const active = searchParams.brand ?? "All";
+  const { brand } = await searchParams;
+  const active = brand ?? "All";
 
-  const products = getProductsByTag("New");
+  const products = await getProductsByTag("New");
   const filtered = active === "All" ? products : products.filter((p) => p.tags.includes(active));
 
   return (
