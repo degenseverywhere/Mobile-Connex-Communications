@@ -4,11 +4,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ShoppingCart } from "lucide-react";
 
-export const dynamic = "force-dynamic";
-
-export async function generateMetadata({ params }: { params: Promise<{ handle: string }> }) {
-  const { handle } = await params;
-  const product = await getProductByHandle(handle);
+export function generateMetadata({ params }: { params: { handle: string } }) {
+  const product = getProductByHandle(params.handle);
   if (!product) return {};
   return {
     title: `${product.title} | Mobile Connex Communications`,
@@ -16,9 +13,8 @@ export async function generateMetadata({ params }: { params: Promise<{ handle: s
   };
 }
 
-export default async function ProductPage({ params }: { params: Promise<{ handle: string }> }) {
-  const { handle } = await params;
-  const product = await getProductByHandle(handle);
+export default function ProductPage({ params }: { params: { handle: string } }) {
+  const product = getProductByHandle(params.handle);
   if (!product) notFound();
 
   const brand     = getBrand(product);

@@ -3,7 +3,6 @@ import ProductCard from "@/components/ProductCard";
 import { RefreshCw } from "lucide-react";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
 export const metadata = { title: "Refurbished Phones | Mobile Connex Communications" };
 
 const BRANDS     = ["All", "Apple", "Samsung", "OPPO"];
@@ -15,16 +14,15 @@ const CONDITION_KEY = [
   { label: "Fair", desc: "Visible wear, 100% working" },
 ];
 
-export default async function RefurbishedPage({
+export default function RefurbishedPage({
   searchParams,
 }: {
-  searchParams: Promise<{ brand?: string; condition?: string }>;
+  searchParams: { brand?: string; condition?: string };
 }) {
-  const { brand, condition } = await searchParams;
-  const activeBrand     = brand     ?? "All";
-  const activeCondition = condition ?? "All";
+  const activeBrand     = searchParams.brand     ?? "All";
+  const activeCondition = searchParams.condition ?? "All";
 
-  const products = await getProductsByTag("Refurbished");
+  const products = getProductsByTag("Refurbished");
   const filtered = products.filter((p) => {
     const brandOk     = activeBrand     === "All" || p.tags.includes(activeBrand);
     const conditionOk = activeCondition === "All" || p.tags.includes(activeCondition);

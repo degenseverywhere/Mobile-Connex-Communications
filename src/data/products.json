@@ -1,0 +1,184 @@
+[
+  {
+    "id": "gid://shopify/Product/10029120094528",
+    "title": "Apple iPhone 17 Pro Max",
+    "handle": "apple-iphone-17-pro-max",
+    "tags": ["Apple", "New"],
+    "description": "Display: 6.9\" Super Retina XDR OLED, 2868×1320, 460 ppi, 1–120Hz ProMotion. Processor: Apple A19 Pro (3nm), 6-core CPU/GPU, 16-core Neural Engine. RAM & Storage: 12GB RAM, 256GB–2TB. Camera: 48MP main (ƒ/1.78), 48MP ultra-wide, 48MP telephoto with 4–8× optical zoom. Battery: ~4823mAh, up to 39h video playback. Design: Titanium frame, USB-C (USB 3).",
+    "priceRange": { "minVariantPrice": { "amount": "1569.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/ip214088_00.jpg?v=1769763580", "altText": "Apple iPhone 17 Pro Max" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/ip214088_00.jpg?v=1769763580",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/ip214089_00.jpg?v=1769763681",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/ip214087_00.jpg?v=1769763698"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51492943659328", "title": "Cosmic Orange / 256GB", "price": { "amount": "1569.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51492943692096", "title": "Cosmic Orange / 512GB", "price": { "amount": "1569.00", "currencyCode": "SGD" }, "availableForSale": false } },
+      { "node": { "id": "gid://shopify/ProductVariant/51492943724864", "title": "Cosmic Orange / 1TB",  "price": { "amount": "1569.00", "currencyCode": "SGD" }, "availableForSale": false } },
+      { "node": { "id": "gid://shopify/ProductVariant/51492943790400", "title": "Deep Blue / 256GB",    "price": { "amount": "1569.00", "currencyCode": "SGD" }, "availableForSale": false } },
+      { "node": { "id": "gid://shopify/ProductVariant/51492943921472", "title": "Silver / 256GB",       "price": { "amount": "1569.00", "currencyCode": "SGD" }, "availableForSale": false } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10031074246976",
+    "title": "Samsung Galaxy S25 Ultra 5G",
+    "handle": "samsung-galaxy-s25-ultra-5g",
+    "tags": ["Samsung", "New"],
+    "description": "Display: 6.9\" Dynamic AMOLED 2X, 3120×1440 Quad HD+. Camera: 200MP main, 50MP ultra-wide, 10MP telephoto (3×), 50MP telephoto (5×). Processor: Snapdragon 8 Elite. Battery: 5000mAh with 45W fast charging. Built-in S Pen.",
+    "priceRange": { "minVariantPrice": { "amount": "1000.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/Samsung-S25-Ultra-Titanium-Silverblue-1.png?v=1769667315", "altText": "Samsung Galaxy S25 Ultra 5G" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/Samsung-S25-Ultra-Titanium-Silverblue-1.png?v=1769667315",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/Samsung-S25-Ultra-Titanium-Gray-1.png?v=1769667430",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/Samsung-S25-Ultra-Titanium-Jetblack-1.png?v=1769667298"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51489896235328", "title": "Titanium Silverblue / 256GB | 12GB", "price": { "amount": "1000.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51489958297920", "title": "Titanium Silverblue / 512GB | 12GB", "price": { "amount": "1000.00", "currencyCode": "SGD" }, "availableForSale": false } },
+      { "node": { "id": "gid://shopify/ProductVariant/51489958330688", "title": "Titanium Silverblue / 1TB | 12GB",  "price": { "amount": "1000.00", "currencyCode": "SGD" }, "availableForSale": false } },
+      { "node": { "id": "gid://shopify/ProductVariant/51489896268096", "title": "Titanium Grey / 256GB | 12GB",      "price": { "amount": "1000.00", "currencyCode": "SGD" }, "availableForSale": false } },
+      { "node": { "id": "gid://shopify/ProductVariant/51489896300864", "title": "Titanium Black / 256GB | 12GB",     "price": { "amount": "1000.00", "currencyCode": "SGD" }, "availableForSale": false } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10061998555456",
+    "title": "OPPO Reno15 Pro Max",
+    "handle": "oppo-reno15-pro-max",
+    "tags": ["OPPO", "New"],
+    "description": "200MP Ultra Clear Main Camera. 6600mAh Large Battery. 12GB RAM + 512GB storage.",
+    "priceRange": { "minVariantPrice": { "amount": "999.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/vJEP6dkP9gU12uNS.png?v=1772522241", "altText": "OPPO Reno15 Pro Max" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/vJEP6dkP9gU12uNS.png?v=1772522241",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/oppo_reno15.png?v=1772522374",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/oppo_reno15_brown.png?v=1772522388"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51584685310272", "title": "Aura Gold / 12+512GB",  "price": { "amount": "999.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51584685343040", "title": "Dusk Brown / 12+512GB", "price": { "amount": "999.00", "currencyCode": "SGD" }, "availableForSale": true } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10072295309632",
+    "title": "OPPO Reno15 5G",
+    "handle": "oppo-reno15-5g",
+    "tags": ["OPPO", "New"],
+    "description": "50MP Ultra-Clear Main Camera + 50MP Telephoto Portrait Camera. IP69 water & dust resistance. 6500mAh large battery. 12GB RAM + 512GB storage.",
+    "priceRange": { "minVariantPrice": { "amount": "779.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/440-440-white.png?v=1773625323", "altText": "OPPO Reno15 5G" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/440-440-white.png?v=1773625323",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/TwilightBlue_1_png.webp?v=1773625380"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51621830361408", "title": "12+512GB / Aurora White", "price": { "amount": "779.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51621830394176", "title": "12+512GB / Blue",         "price": { "amount": "779.00", "currencyCode": "SGD" }, "availableForSale": false } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10072335450432",
+    "title": "OPPO Find X9 Pro",
+    "handle": "oppo-find-x9-pro",
+    "tags": ["OPPO", "New"],
+    "description": "200MP Hasselblad Telephoto Camera with 120× Super Zoom & dual OIS. 4K 120fps Dolby Vision video. 6.78\" 120Hz ProXDR AMOLED (3,600 nits). 7,500mAh battery with 80W SUPERVOOC wired + 50W wireless. MediaTek Dimensity 9500. IP66/68/69 rated.",
+    "priceRange": { "minVariantPrice": { "amount": "1449.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/Oppo_Find_x9_charcoal_490edadd-a6bb-43c2-be39-a8b1ad683e86.png?v=1773627300", "altText": "OPPO Find X9 Pro" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/Oppo_Find_x9_charcoal_490edadd-a6bb-43c2-be39-a8b1ad683e86.png?v=1773627300",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/Oppo_find_x9_Silk_white_a88acc15-5aed-4fc5-bb2e-3be7c5a693d7.png?v=1773627312"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51621953536320", "title": "16+512GB / Titanium Charcoal", "price": { "amount": "1449.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51621953569088", "title": "16+512GB / Silk White",        "price": { "amount": "1449.00", "currencyCode": "SGD" }, "availableForSale": false } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10072343642432",
+    "title": "OPPO Find X9",
+    "handle": "oppo-find-x9",
+    "tags": ["OPPO", "New"],
+    "description": "50MP Hasselblad Triple Camera with Periscope Telephoto, 120× Super Zoom, and OIS. 4K 120fps Dolby Vision video. 6.59\" 120Hz ProXDR AMOLED (3,600 nits). 7,025mAh battery with 80W SUPERVOOC. Dimensity 9500 (3nm). IP66/68/69 rated.",
+    "priceRange": { "minVariantPrice": { "amount": "1199.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/find_x9_red.png?v=1773629031", "altText": "OPPO Find X9" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/find_x9_red.png?v=1773629031",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/find_x9_gray.png?v=1773629043"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51621984895296", "title": "16+512GB / Velvet Red",      "price": { "amount": "1199.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51621984928064", "title": "16+512GB / Titanium Grey",   "price": { "amount": "1199.00", "currencyCode": "SGD" }, "availableForSale": false } },
+      { "node": { "id": "gid://shopify/ProductVariant/51621984960832", "title": "16+512GB / Titanium Black",  "price": { "amount": "1199.00", "currencyCode": "SGD" }, "availableForSale": false } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10072350622016",
+    "title": "OPPO Reno 15F 5G",
+    "handle": "oppo-reno-15f-5g",
+    "tags": ["OPPO", "New"],
+    "description": "Mid-range 5G smartphone with OPPO's signature design. Available in 8+256GB and 8+512GB configurations.",
+    "priceRange": { "minVariantPrice": { "amount": "499.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/reno15_f_blue.png?v=1773629475", "altText": "OPPO Reno 15F 5G" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/reno15_f_blue.png?v=1773629475",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/reno_15f_aurora_blue.png?v=1773629486"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51621993677120", "title": "8+512GB / Blue",         "price": { "amount": "548.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51621993709888", "title": "8+512GB / Aurora Blue",  "price": { "amount": "548.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51621993611584", "title": "8+256GB / Blue",         "price": { "amount": "499.00", "currencyCode": "SGD" }, "availableForSale": false } },
+      { "node": { "id": "gid://shopify/ProductVariant/51621993644352", "title": "8+256GB / Aurora Blue",  "price": { "amount": "499.00", "currencyCode": "SGD" }, "availableForSale": false } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10072353800512",
+    "title": "OPPO A6 Pro 5G",
+    "handle": "oppo-a6-pro-5g",
+    "tags": ["OPPO", "New"],
+    "description": "50MP AI Rear Camera with Underwater Photography Mode, AI Night Mode. 16MP Front Camera with Screen Fill Light. 6.57\" 120Hz FHD+ AMOLED (1,400 nits). 7,000mAh battery with 80W SUPERVOOC. MIL-STD-810H + IP66/68/69 rated.",
+    "priceRange": { "minVariantPrice": { "amount": "399.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/a6_pro_blue.png?v=1773630780", "altText": "OPPO A6 Pro 5G" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/a6_pro_blue.png?v=1773630780",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/a6_coral_pink.png?v=1773630790"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51622037094720", "title": "8+256GB / Stellar Pink", "price": { "amount": "399.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51622037061952", "title": "8+256GB / Blue",         "price": { "amount": "399.00", "currencyCode": "SGD" }, "availableForSale": false } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10072354718016",
+    "title": "OPPO A6x 5G",
+    "handle": "oppo-a6x-5g",
+    "tags": ["OPPO", "New"],
+    "description": "Entry-level 5G smartphone with vibrant AMOLED display and long battery life. 8GB RAM + 128GB storage.",
+    "priceRange": { "minVariantPrice": { "amount": "199.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/a6x_purple.png?v=1773631460", "altText": "OPPO A6x 5G" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/a6x_purple.png?v=1773631460",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/a6x_violet_purple.png?v=1773631473"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51622041715008", "title": "8GB+128GB / Plume Purple",  "price": { "amount": "199.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51622045188416", "title": "8GB+128GB / Violet Purple", "price": { "amount": "199.00", "currencyCode": "SGD" }, "availableForSale": true } }
+    ]}
+  },
+  {
+    "id": "gid://shopify/Product/10072353014080",
+    "title": "OPPO Reno 13F 5G",
+    "handle": "oppo-reno-13f-5g",
+    "tags": ["OPPO", "New"],
+    "description": "50MP Triple Rear Camera with OIS, 8MP ultra-wide, 2MP macro. 32MP Front Camera with AI Livephoto. 6.67\" 120Hz AMOLED (92.2% screen-to-body). 5,800mAh battery with 45W SUPERVOOC. Snapdragon 6 Gen 1, 12GB RAM + 256GB storage.",
+    "priceRange": { "minVariantPrice": { "amount": "0.00", "currencyCode": "SGD" } },
+    "featuredImage": { "url": "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/reno_13f_black.png?v=1773630492", "altText": "OPPO Reno 13F 5G" },
+    "images": [
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/reno_13f_black.png?v=1773630492",
+      "https://cdn.shopify.com/s/files/1/0972/4379/1680/files/reno_13f_plume_purple.png?v=1773630504"
+    ],
+    "variants": { "edges": [
+      { "node": { "id": "gid://shopify/ProductVariant/51622022480192", "title": "12+256GB / Plume Purple",   "price": { "amount": "0.00", "currencyCode": "SGD" }, "availableForSale": true } },
+      { "node": { "id": "gid://shopify/ProductVariant/51622022447424", "title": "12+256GB / Graphite Grey",  "price": { "amount": "0.00", "currencyCode": "SGD" }, "availableForSale": false } }
+    ]}
+  }
+]

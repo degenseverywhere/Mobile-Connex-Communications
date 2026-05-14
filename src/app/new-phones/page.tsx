@@ -2,20 +2,18 @@ import { getProductsByTag } from "@/lib/shopify";
 import ProductCard from "@/components/ProductCard";
 import { Smartphone } from "lucide-react";
 
-export const dynamic = "force-dynamic";
 export const metadata = { title: "New Phones | Mobile Connex Communications" };
 
 const BRANDS = ["All", "Apple", "Samsung", "OPPO"];
 
-export default async function NewPhonesPage({
+export default function NewPhonesPage({
   searchParams,
 }: {
-  searchParams: Promise<{ brand?: string }>;
+  searchParams: { brand?: string };
 }) {
-  const { brand } = await searchParams;
-  const active = brand ?? "All";
+  const active = searchParams.brand ?? "All";
 
-  const products = await getProductsByTag("New");
+  const products = getProductsByTag("New");
   const filtered = active === "All" ? products : products.filter((p) => p.tags.includes(active));
 
   return (

@@ -3,8 +3,6 @@ import { ArrowRight, ShieldCheck, RefreshCw, Zap } from "lucide-react";
 import { getAllProducts } from "@/lib/shopify";
 import ProductCard from "@/components/ProductCard";
 
-export const dynamic = "force-dynamic";
-
 export const metadata = {
   title: "Mobile Connex Communications | New & Refurbished Phones Singapore",
   description: "Trusted phone dealer since 2007. Buy new and refurbished phones or trade in your device.",
@@ -16,8 +14,8 @@ const TRUST = [
   { icon: Zap,         title: "Instant Trade-In",   desc: "Get a quote for your device in seconds" },
 ];
 
-export default async function Home() {
-  const featured = await getAllProducts(4);
+export default function Home() {
+  const featured = getAllProducts(4);
 
   return (
     <>
