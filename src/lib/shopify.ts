@@ -1,36 +1,5 @@
-import { URLSearchParams } from "node:url";
-
-const SHOP   = process.env.SHOPIFY_SHOP!;
-const ID     = process.env.SHOPIFY_CLIENT_ID!;
-const SECRET = process.env.SHOPIFY_CLIENT_SECRET!;
-
-// ─── Token cache (persists across requests in the same serverless worker) ─────
-
-let cachedToken: string | null = null;
-let expiresAt = 0;
-
-async function getToken(): Promise<string> {
-  if (cachedToken && Date.now() < expiresAt - 60_000) return cachedToken;
-
-  const res = await fetch(
-    `https://${SHOP}.myshopify.com/admin/oauth/access_token`,
-    {
-      method: "POST",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: new URLSearchParams({
-        grant_type:    "client_credentials",
-        client_id:     ID,
-        client_secret: SECRET,
-      }),
-    }
-  );
-
-  if (!res.ok) throw new Error(`Shopify token request failed: ${res.status}`);
-  const { access_token, expires_in } = await res.json();
-  cachedToken = access_token as string;
-  expiresAt   = Date.now() + (expires_in as number) * 1_000;
-  return cachedToken;
-}
+const SHOP  = process.env.SHOPIFY_SHOP!;   // e.g. frm6ba-yj
+const TOKEN = process.env.SHOPIFY_ACCESS_TOKEN!; // shpat_xxx from Shopify admin
 
 // ─── GraphQL executor (Storefront API, private server-side token) ─────────────
 
@@ -38,15 +7,13 @@ async function graphql<T>(
   query: string,
   variables: Record<string, unknown> = {}
 ): Promise<T> {
-  const token = await getToken();
-
   const res = await fetch(
     `https://${SHOP}.myshopify.com/api/2025-01/graphql.json`,
     {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "Shopify-Storefront-Private-Token": token,
+        "Shopify-Storefront-Private-Token": TOKEN,
       },
       body: JSON.stringify({ query, variables }),
       next: { revalidate: 60 },
