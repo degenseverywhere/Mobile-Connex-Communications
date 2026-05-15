@@ -49,13 +49,13 @@ export default function Footer() {
       <div className="bg-mcx-red">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-white font-semibold text-base sm:text-lg text-center sm:text-left">
-            Know what your device is worth — get an instant trade-in value.
+            Get a discount on your next device if you trade-in today.
           </p>
           <Link
             href="/trade-in"
             className="shrink-0 inline-flex items-center px-5 py-2.5 rounded-lg bg-white text-mcx-red font-semibold text-sm hover:bg-gray-100 transition-colors"
           >
-            Start Trade-In
+            View Trade-In Prices
           </Link>
         </div>
       </div>

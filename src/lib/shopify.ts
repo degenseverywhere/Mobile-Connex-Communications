@@ -21,6 +21,7 @@ export type ShopifyProduct = {
         title: string;
         price: { amount: string; currencyCode: string };
         availableForSale: boolean;
+        image: { url: string; altText: string | null } | null;
       };
     }[];
   };
@@ -59,7 +60,7 @@ const FIELDS = `
   featuredImage { url altText }
   variants(first: 20) {
     edges {
-      node { id title price { amount currencyCode } availableForSale }
+      node { id title price { amount currencyCode } availableForSale image { url altText } }
     }
   }
 `;
