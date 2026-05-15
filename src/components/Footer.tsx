@@ -149,19 +149,19 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-sm text-gray-400">
                 <Phone size={15} className="mt-0.5 shrink-0 text-mcx-red" />
-                <a href="tel:+1-800-MCX-PHONE" className="hover:text-white transition-colors">
-                  1-800-MCX-PHONE
+                <a href="tel:+65" className="hover:text-white transition-colors">
+                  +65 [Your Number]
                 </a>
               </li>
               <li className="flex items-start gap-2.5 text-sm text-gray-400">
                 <Mail size={15} className="mt-0.5 shrink-0 text-mcx-red" />
-                <a href="mailto:hello@mobileconnex.com" className="hover:text-white transition-colors">
-                  hello@mobileconnex.com
+                <a href="mailto:mblcnxcommunications@gmail.com" className="hover:text-white transition-colors">
+                  mblcnxcommunications@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-2.5 text-sm text-gray-400">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-mcx-red" />
-                <span>123 Connex Drive, Tech City, TX 75001</span>
+                <span>[Your Store Address], Singapore</span>
               </li>
             </ul>
           </div>
