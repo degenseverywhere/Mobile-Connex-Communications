@@ -23,20 +23,6 @@ export default function TradeInPage() {
         </p>
       </div>
 
-      {/* Trust strip */}
-      <div className="grid grid-cols-3 gap-3 mb-10">
-        {[
-          { icon: "⚡", label: "Instant quote" },
-          { icon: "💰", label: "Same-day payment" },
-          { icon: "🔒", label: "No obligation" },
-        ].map(({ icon, label }) => (
-          <div key={label} className="flex flex-col items-center gap-1 bg-gray-50 rounded-xl py-3 px-2 text-center border border-gray-100">
-            <span className="text-lg">{icon}</span>
-            <span className="text-xs font-medium text-mcx-charcoal">{label}</span>
-          </div>
-        ))}
-      </div>
-
       <TradeInCalculator />
     </div>
   );

@@ -1,8 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
-import { ArrowLeft, CheckCircle, ChevronRight, Minus, Plus } from "lucide-react";
+import { ArrowLeft, CheckCircle, ChevronRight, Search } from "lucide-react";
 import products from "@/data/products.json";
 import {
   TRADE_IN, CONDITIONS, BATTERY_OPTIONS,
@@ -102,17 +102,51 @@ function PriceLine({ label, amount, highlight = false }: { label: string; amount
 // ─── Step 1: Product grid ─────────────────────────────────────────────────────
 
 function ProductGrid({ onSelect }: { onSelect: (p: Product) => void }) {
-  // Only show products that have a trade-in config
   const eligible = products.filter((p) => TRADE_IN[p.handle]);
+  const [query, setQuery] = useState("");
+
+  const filtered = query.trim()
+    ? eligible.filter((p) =>
+        p.title.toLowerCase().includes(query.toLowerCase()) ||
+        getBrand(p as Parameters<typeof getBrand>[0]).toLowerCase().includes(query.toLowerCase())
+      )
+    : eligible;
 
   return (
     <div>
-      <div className="text-center mb-8">
+      <div className="text-center mb-6">
         <h2 className="text-2xl font-bold text-mcx-dark mb-2">Select your phone</h2>
         <p className="text-mcx-gray text-sm">Choose the model you want to trade in.</p>
       </div>
+
+      {/* Search bar */}
+      <div className="relative max-w-sm mx-auto mb-7">
+        <Search size={16} className="absolute left-3.5 top-1/2 -translate-y-1/2 text-mcx-gray pointer-events-none" />
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search by model or brand…"
+          className="w-full pl-9 pr-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-mcx-red bg-white shadow-sm"
+        />
+        {query && (
+          <button
+            type="button"
+            onClick={() => setQuery("")}
+            className="absolute right-3 top-1/2 -translate-y-1/2 text-mcx-gray hover:text-mcx-dark text-lg leading-none"
+          >
+            ×
+          </button>
+        )}
+      </div>
+
+      {filtered.length === 0 && (
+        <p className="text-center text-mcx-gray py-10 text-sm">
+          No results for &ldquo;{query}&rdquo; — try a different search.
+        </p>
+      )}
+
       <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-        {eligible.map((product) => {
+        {filtered.map((product) => {
           const cfg = TRADE_IN[product.handle];
           const brand = getBrand(product as Parameters<typeof getBrand>[0]);
           return (
@@ -261,6 +295,20 @@ function Calculator({
               Get this quote <ChevronRight size={18} />
             </button>
           )}
+
+          {/* Trust badges — shown after product is selected */}
+          <div className="grid grid-cols-3 gap-2 pt-1">
+            {[
+              { icon: "⚡", label: "Instant quote" },
+              { icon: "💰", label: "Same-day payment" },
+              { icon: "🔒", label: "No obligation" },
+            ].map(({ icon, label }) => (
+              <div key={label} className="flex flex-col items-center gap-1 bg-gray-50 rounded-xl py-2.5 px-1 text-center border border-gray-100">
+                <span className="text-base">{icon}</span>
+                <span className="text-xs font-medium text-mcx-charcoal leading-tight">{label}</span>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* Right: selectors */}
@@ -495,22 +543,53 @@ function ContactStep({
 
 type Step = "select" | "calc" | "contact";
 
+function stepFromURL(): Step {
+  if (typeof window === "undefined") return "select";
+  const p = new URLSearchParams(window.location.search).get("step");
+  if (p === "calc" || p === "contact") return p;
+  return "select";
+}
+
 export default function TradeInCalculator() {
-  const [step, setStep]        = useState<Step>("select");
-  const [product, setProduct]  = useState<Product | null>(null);
-  const [total, setTotal]      = useState(0);
+  const [step, setStep]         = useState<Step>("select");
+  const [product, setProduct]   = useState<Product | null>(null);
+  const [total, setTotal]       = useState(0);
   const [finalSel, setFinalSel] = useState<Selection | null>(null);
+
+  // Sync state when browser back/forward is used
+  useEffect(() => {
+    const onPop = () => setStep(stepFromURL());
+    window.addEventListener("popstate", onPop);
+    return () => window.removeEventListener("popstate", onPop);
+  }, []);
+
+  function goTo(next: Step) {
+    setStep(next);
+    const url = next === "select" ? "/trade-in" : `/trade-in?step=${next}`;
+    window.history.pushState({ step: next }, "", url);
+  }
+
+  function handleSelectProduct(p: Product) {
+    setProduct(p);
+    goTo("calc");
+  }
+
+  function handleNext(t: number, s: Selection) {
+    setTotal(t);
+    setFinalSel(s);
+    goTo("contact");
+  }
 
   return (
     <div>
       {step === "select" && (
-        <ProductGrid onSelect={(p) => { setProduct(p); setStep("calc"); }} />
+        <ProductGrid onSelect={handleSelectProduct} />
       )}
       {step === "calc" && product && (
         <Calculator
           product={product}
-          onBack={() => setStep("select")}
-          onNext={(t, s) => { setTotal(t); setFinalSel(s); setStep("contact"); }}
+          onBack={() => goTo("select")}
+          onNext={handleNext}
         />
       )}
       {step === "contact" && product && finalSel && (
@@ -518,7 +597,7 @@ export default function TradeInCalculator() {
           product={product}
           total={total}
           sel={finalSel}
-          onBack={() => setStep("calc")}
+          onBack={() => goTo("calc")}
         />
       )}
     </div>
