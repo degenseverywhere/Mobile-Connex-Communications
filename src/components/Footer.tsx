@@ -149,8 +149,8 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-start gap-2.5 text-sm text-gray-400">
                 <Phone size={15} className="mt-0.5 shrink-0 text-mcx-red" />
-                <a href="tel:+65" className="hover:text-white transition-colors">
-                  +65 [Your Number]
+                <a href="tel:+6597782228" className="hover:text-white transition-colors">
+                  +65 9778 2228
                 </a>
               </li>
               <li className="flex items-start gap-2.5 text-sm text-gray-400">
@@ -161,7 +161,7 @@ export default function Footer() {
               </li>
               <li className="flex items-start gap-2.5 text-sm text-gray-400">
                 <MapPin size={15} className="mt-0.5 shrink-0 text-mcx-red" />
-                <span>[Your Store Address], Singapore</span>
+                <span>Blk 190 Toa Payoh, #01-580, Singapore 310190</span>
               </li>
             </ul>
           </div>

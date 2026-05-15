@@ -9,8 +9,8 @@ const CONTACT = [
   {
     icon: Phone,
     label: "Phone / WhatsApp",
-    value: "+65 [Your Number]",
-    href: "tel:+65",
+    value: "+65 9778 2228",
+    href: "tel:+6597782228",
     cta: "Call or WhatsApp us",
   },
   {
@@ -23,8 +23,8 @@ const CONTACT = [
   {
     icon: MapPin,
     label: "Store Address",
-    value: "[Your Store Address], Singapore",
-    href: "https://maps.google.com",
+    value: "Blk 190 Toa Payoh, #01-580\nSingapore 310190",
+    href: "https://www.google.com/maps/search/Blk+190+Toa+Payoh+%2301-580+Singapore+310190",
     cta: "Get directions",
   },
   {

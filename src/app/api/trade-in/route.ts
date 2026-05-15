@@ -42,7 +42,7 @@ export async function POST(req: NextRequest) {
       },
       body: JSON.stringify({
         from: "Trade-In <noreply@mobileconnexcommunications.com>",
-        to: ["mblcnxcommunications@gmail.com"],
+        to: ["mblcnxcommunications@gmail.com"], // Mobile Connex +65 9778 2228
         subject: `New Trade-In Request — ${brand} ${model} (S$${estimatedValue})`,
         text: lines,
       }),
